@@ -145,8 +145,7 @@ class PaymentController extends Controller
                       "ApiCustomFileds": "payable_id='.$payable_id.'&type='.$type.'&member_id='.$mid.'&coach_id='.$cid.'",
                       "ErrorUrl": "http://nuakw.com/admin/members/transactions"
                               }';
-                                  //http://nuakw.com/callback
-                                $soap_do     = curl_init();
+                                 $soap_do     = curl_init();
                               curl_setopt($soap_do, CURLOPT_URL, $this->data['basURL']."/ApiInvoices/CreateInvoiceIso");
                               curl_setopt($soap_do, CURLOPT_CONNECTTIMEOUT, 10);
                               curl_setopt($soap_do, CURLOPT_TIMEOUT, 10);
