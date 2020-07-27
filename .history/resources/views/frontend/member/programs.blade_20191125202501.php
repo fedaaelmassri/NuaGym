@@ -1,0 +1,114 @@
+@extends('frontend.layouts.admin')
+
+@section('style')
+<!--begin::Page Vendors Styles(used by this page) -->
+<link href="{{asset('assets/vendors/custom/datatables/datatables.bundle.css')}}" rel="stylesheet" type="text/css" />
+ <!--end::Page Vendors Styles -->
+@endsection
+
+@section('content')
+
+<div class="content">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card ">
+              <div class="card-header">
+                <h4 class="card-title"> Programs</h4>
+
+
+              </div>
+              <div class="card-body">
+              @if (count($programs) > 0)
+
+                    <div class="table-responsive ps" >
+                        <table class="table tablesorter " id="">
+                                <thead class=" text-primary">
+                                    <tr><th>
+                                        ID
+                                    </th>
+                                    <th>
+                                        Name
+                                    </th>
+                                    <th>
+                                        Cost
+                                    </th>
+                                    <th class="text-center">
+                                        Coach
+                                    </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($programs as $programs)
+
+                                    <tr id="row-{{$programs->id}}">
+                                        <td>
+                                            {{$programs->id}}
+
+
+                                        </td>
+                                        <td>
+                                        @foreach(App\programs::all() as $programinfo)
+                                        @if($programinfo->id==$programs->program_id)
+
+                                        {{$programinfo->name}}
+                                        @endif
+
+                                        @endforeach
+
+                                        </td>
+                                        <td>
+                                        @foreach(App\programs::all() as $programinfo)
+                                        @if($programinfo->id==$programs->program_id)
+
+                                        {{$programinfo->cost}}
+                                        @endif
+                                        @endforeach
+
+                                        </td>
+
+                                        <td class="text-center">
+                                        @foreach(App\Coaches::all() as $choachinfo)
+                                        @if($choachinfo->id==$programs->coache_id)
+
+                                        {{$choachinfo->name}}
+                                        @endif
+                                        @endforeach
+
+
+                                            </td>
+
+                                    </tr>
+                                    @endforeach
+
+                                </tbody>
+                        </table>
+                    </div>
+                    @else
+
+                    <blockquote>
+                    <p class="blockquote blockquote-primary">
+                      "I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at."
+                      <br>
+                      <br>
+                      <small>
+                        - Noaa
+                      </small>
+                    </p>
+                  </blockquote>
+                    @endif
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+
+
+
+    <script>
+
+</script>
+@endsection
